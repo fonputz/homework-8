@@ -1,20 +1,34 @@
 n = input('Enter word\n')
 lis= []
 li = []
-с = 3
-def tonum(a):
-  l = ord(a)
-  return chr(l+с)
+cypher= 5
+def tocypher(a):
+  if a ==' ':
+    return ' '
+  else:
+    #УЗНАТИ ЧИСЛО ПО АБЕТЦІ
+    index_l = ord(a)-ord('a') 
+    #число по абетці + індекс шифрування %(ділим на остаток) 26 = 
+    index_c = (index_l+cypher)%26
+    #закодувати в унікод число букви
+    new_chr = index_c+ord('a')
+    return chr(new_chr)
 
-def tochr(a):
-  l = ord(a)
-  return chr(l-с)
+def fromcypher(a):
+  if a == ' ':
+    return ' '
+  else:
+    index_l = ord(a)-ord('a') 
+    index_c = (index_l-cypher)%26
+    new_chr = index_c+ord('a')
+    return chr(new_chr)
 
-print (' Bef - ', n)
+  
+
 for i in n:
-  lis.append(tonum(i))
+  lis.append(tocypher(i))
 
 for i in lis:
-  li.append(tochr(i))
+  li.append(fromcypher(i))
 print(lis)
 print(li)
